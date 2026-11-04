@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDM Conecta | Sites Profissionais & Redes Sociais</title>
+    <title>TDM Conecta | Sites Profissionais, Dashboards & Mídia</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -73,10 +73,14 @@
             box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12);
         }
 
+        /* CORREÇÃO DEFINITIVA DO TEXTO GRADIENTE (Sem blocos retangulares azuis) */
         .gradient-text {
-            background: linear-gradient(135deg, #1D4ED8 0%, #6D28D9 50%, #0284C7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            display: inline-block !important;
+            background: linear-gradient(135deg, #1D4ED8 0%, #6D28D9 50%, #0284C7 100%) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
         }
     </style>
 </head>
@@ -170,7 +174,7 @@
             </h1>
 
             <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed">
-                Desenvolvemos sites profissionais de alto impacto, garantimos a manutenção técnica e gerenciamos suas redes sociais para atrair novos clientes de forma consistente.
+                Desenvolvemos sites profissionais de alto impacto, apresentações executivas persuasivas, dashboards estratégicos e gerenciamos suas redes sociais.
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -197,13 +201,14 @@
                 <p class="text-3xl sm:text-5xl font-extrabold text-slate-900">Soluções sob medida para a sua <span class="gradient-text">empresa</span></p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Grade de Serviços Básicos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
                     <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Criação de Sites Profissionais</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    <p class="text-slate-600 text-sm leading-relaxed">
                         Landing Pages otimizadas para conversão, sites institucionais e plataformas completas com visual moderno e responsivo.
                     </p>
                 </div>
@@ -213,7 +218,7 @@
                         <i class="fa-solid fa-gears"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Manutenção & Suporte Técnico</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    <p class="text-slate-600 text-sm leading-relaxed">
                         Atualizações constantes, otimização de velocidade, correções de segurança e cópias de segurança diárias.
                     </p>
                 </div>
@@ -223,10 +228,108 @@
                         <i class="fa-solid fa-share-nodes"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Gestão de Redes Sociais</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    <p class="text-slate-600 text-sm leading-relaxed">
                         Criação de conteúdos visuais atrativos, planeamento editorial e gestão contínua para posicionar e destacar a sua marca.
                     </p>
                 </div>
+            </div>
+
+            <!-- SERVIÇOS ESTRUTURADOS E INTERATIVOS (SLIDER AUTOMÁTICO) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- CARD 1: APRESENTAÇÕES EXECUTIVAS (Slider Infográfico Automático) -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-file-powerpoint"></i>
+                            </div>
+                            <span class="text-xs uppercase font-extrabold bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Slide Deck Pro</span>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Apresentações Executivas</h3>
+                        <p class="text-slate-600 text-xs mb-6">
+                            Design de alto impacto para propostas comerciais, reuniões de diretoria e pitch de vendas com layout infográfico premium.
+                        </p>
+
+                        <!-- Preview com Rotação Automática -->
+                        <div class="relative bg-slate-900 rounded-2xl p-6 text-white min-h-[250px] flex flex-col justify-between border border-slate-800 shadow-inner overflow-hidden">
+                            <div id="deck-slide-container" class="transition-all duration-500">
+                                <!-- Preenchido dinamicamente via JS -->
+                            </div>
+
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-800 mt-4 z-10">
+                                <div class="flex gap-1.5" id="deck-dots-container">
+                                    <!-- Dots preenchidos via JS -->
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] text-amber-400 font-mono flex items-center gap-1">
+                                        <i class="fa-solid fa-rotate text-[8px] animate-spin"></i> Auto-slide
+                                    </span>
+                                    <button onclick="manualDeckSlide(-1)" class="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button onclick="manualDeckSlide(1)" class="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Formato PPTX / PDF</span>
+                        <span><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Design Infográfico</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: CRIAÇÃO DE DASHBOARDS (Rotação Automática dos 3 Exemplos) -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <span class="text-xs uppercase font-extrabold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Business Intelligence</span>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Criação de Dashboards Inteligentes</h3>
+                        <p class="text-slate-600 text-xs mb-6">
+                            Transforme dados brutos em inteligência estratégica com painéis visuais, KPIs em tempo real e monitoramento corporativo.
+                        </p>
+
+                        <!-- Interface Dinâmica com Rotação Automática -->
+                        <div class="bg-slate-900 rounded-2xl p-3 border border-slate-800 shadow-inner space-y-3 min-h-[250px] flex flex-col justify-between">
+                            
+                            <!-- Topbar do Dashboard -->
+                            <div class="bg-slate-800 text-white p-2 rounded-xl flex items-center justify-between text-[11px] font-semibold border border-slate-700">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-table-columns text-indigo-400"></i>
+                                    <span id="dash-header-title" class="text-slate-100">Jira Agile Dashboard</span>
+                                </div>
+                                <div class="flex gap-1 text-[9px]" id="dash-tab-btns">
+                                    <button onclick="manualDashSelect(0)" id="dash-tab-0" class="px-2 py-0.5 rounded bg-indigo-600 text-white">Jira</button>
+                                    <button onclick="manualDashSelect(1)" id="dash-tab-1" class="px-2 py-0.5 rounded bg-slate-700 text-slate-300">User Analytics</button>
+                                    <button onclick="manualDashSelect(2)" id="dash-tab-2" class="px-2 py-0.5 rounded bg-slate-700 text-slate-300">Power BI</button>
+                                </div>
+                            </div>
+
+                            <!-- Área Dinâmica dos Widgets -->
+                            <div id="dash-widget-container" class="flex-1 my-1">
+                                <!-- Renderizado dinamicamente via JS -->
+                            </div>
+
+                            <div class="flex justify-between items-center text-[9px] text-slate-400 pt-2 border-t border-slate-800">
+                                <span class="flex items-center gap-1 text-emerald-400">
+                                    <i class="fa-solid fa-circle text-[6px] animate-ping"></i> Transição automática a cada 4.5s
+                                </span>
+                                <div class="flex gap-1" id="dash-indicators">
+                                    <!-- Dots -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Power BI / Looker</span>
+                        <span><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Integração de Dados</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -261,7 +364,7 @@
                     </div>
                     <h4 class="text-lg font-bold text-slate-900 mb-2">Solução 360° Integrada</h4>
                     <p class="text-slate-600 text-xs leading-relaxed">
-                        Encontre criação web, suporte técnico e posicionamento em redes sociais centralizados em um único parceiro.
+                        Encontre criação web, dashboards, apresentações corporativas e mídias sociais centralizados num único parceiro.
                     </p>
                 </div>
 
@@ -312,7 +415,7 @@
                             Na <strong class="text-slate-900">TDM Conecta Mídia & Sites</strong>, acreditamos que toda empresa merece ter uma presença online forte, profissional e acessível, sem complicações tecnológicas.
                         </p>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8">
-                            Unimos design moderno, código otimizado e planejamento criativo para cuidar de toda a infraestrutura web e comunicação nas mídias sociais. Nosso compromisso é permitir que você foque no crescimento do seu negócio enquanto nós cuidamos do seu ecossistema digital.
+                            Unimos design moderno, código otimizado, análise de dados e planejamento criativo para cuidar de toda a infraestrutura web e comunicação corporativa. Nosso compromisso é permitir que você foque no crescimento do seu negócio enquanto nós cuidamos do seu ecossistema digital.
                         </p>
 
                         <div class="flex flex-wrap gap-4">
@@ -350,10 +453,10 @@
 
                                 <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
                                     <div class="flex items-center gap-3">
-                                        <i class="fa-solid fa-hashtag text-purple-600 text-xl"></i>
-                                        <span class="text-sm font-bold text-slate-800">Redes Sociais</span>
+                                        <i class="fa-solid fa-chart-pie text-indigo-600 text-xl"></i>
+                                        <span class="text-sm font-bold text-slate-800">Dashboards & KPIs</span>
                                     </div>
-                                    <span class="text-xs bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full font-bold">Posts Agendados</span>
+                                    <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-bold">Ativo</span>
                                 </div>
 
                                 <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
@@ -430,18 +533,26 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-3">Qual(is) serviço(s) você precisa?</label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold cursor-pointer">
                                     <input type="checkbox" value="Criação de Site" class="service-checkbox rounded text-blue-600">
                                     <span>Criação de Site</span>
                                 </label>
                                 <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold cursor-pointer">
                                     <input type="checkbox" value="Manutenção de Site" class="service-checkbox rounded text-purple-600">
-                                    <span>Manutenção</span>
+                                    <span>Manutenção Técnica</span>
                                 </label>
                                 <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold cursor-pointer">
                                     <input type="checkbox" value="Redes Sociais" class="service-checkbox rounded text-cyan-600">
-                                    <span>Redes Sociais</span>
+                                    <span>Gestão Redes Sociais</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold cursor-pointer">
+                                    <input type="checkbox" value="Apresentações Executivas" class="service-checkbox rounded text-amber-600">
+                                    <span>Apresentações Executivas</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold cursor-pointer sm:col-span-2">
+                                    <input type="checkbox" value="Criação de Dashboards" class="service-checkbox rounded text-indigo-600">
+                                    <span>Criação de Dashboards Inteligentes (BI)</span>
                                 </label>
                             </div>
                         </div>
@@ -721,12 +832,281 @@
             email: localStorage.getItem('tdm_email') || 'tdamiao.thiago@gmail.com.br'
         };
 
+        // --- 1. APRESENTAÇÕES EXECUTIVAS: SLIDER AUTOMÁTICO ---
+        const DECK_SLIDES = [
+            {
+                tag: "Head of Infographic / Process Steps",
+                title: "01. Diagrama de Fluxo & Etapas",
+                desc: "Estruturação visual de processos de Step A a Step H com matrizes numéricas e ícones corporativos.",
+                color: "from-blue-600 to-indigo-700"
+            },
+            {
+                tag: "Growth Arrows & Metrics",
+                title: "02. Indicadores & Projeção 39%",
+                desc: "Visualização de crescimento com vetores verticais de escala, metas e comparativo de redes sociais.",
+                color: "from-sky-500 to-blue-700"
+            },
+            {
+                tag: "Power Diagram & Milestones",
+                title: "03. Cronograma de Fases 1 a 8",
+                desc: "Roadmap executivo de desenvolvimento com velocímetro 52% e linha do tempo interativa.",
+                color: "from-indigo-600 to-purple-700"
+            },
+            {
+                tag: "Global Network & Flowchart",
+                title: "04. Conexões de Rede & Matriz",
+                desc: "Esquema global em teia interconectada, mapas de abrangência e gráfico em rosca 25%.",
+                color: "from-blue-700 to-slate-800"
+            },
+            {
+                tag: "Strategic Spiral Diagram",
+                title: "05. Matriz Espiral de Dados",
+                desc: "Análise estratégica em espiral concêntrica com métricas horizontais de evolução corporativa.",
+                color: "from-slate-800 to-indigo-900"
+            }
+        ];
+        let currentDeckIdx = 0;
+        let deckTimer = null;
+
+        function renderDeckSlide(idx) {
+            currentDeckIdx = idx;
+            const slide = DECK_SLIDES[idx];
+            const container = document.getElementById('deck-slide-container');
+            
+            container.innerHTML = `
+                <div class="flex justify-between items-center text-[10px] text-amber-400 font-mono tracking-widest uppercase mb-2">
+                    <span>${slide.tag}</span>
+                    <span>Slide ${idx + 1}/05</span>
+                </div>
+                <h4 class="text-xl font-bold mb-2 text-white">${slide.title}</h4>
+                <p class="text-slate-300 text-xs leading-relaxed mb-4 font-light">"${slide.desc}"</p>
+                
+                <!-- Ilustração Vetorial Representativa -->
+                <div class="h-16 rounded-xl bg-gradient-to-r ${slide.color} p-3 flex items-center justify-around border border-white/10 shadow-inner">
+                    <div class="text-center"><span class="text-xs font-bold block">Phase 0${idx+1}</span><span class="text-[9px] text-blue-200">Execution</span></div>
+                    <div class="w-px h-8 bg-white/20"></div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-amber-400"></i><span class="text-xs font-bold">${(idx+1)*18 + 25}% Target</span></div>
+                    <div class="w-px h-8 bg-white/20"></div>
+                    <div class="text-center"><span class="text-xs font-bold block">Status</span><span class="text-[9px] text-emerald-300">Optimal</span></div>
+                </div>
+            `;
+
+            const dotsContainer = document.getElementById('deck-dots-container');
+            dotsContainer.innerHTML = DECK_SLIDES.map((_, i) => `
+                <span onclick="manualDeckSlideDirect(${i})" class="w-2.5 h-2.5 rounded-full ${i === idx ? 'bg-amber-500 scale-110' : 'bg-slate-700'} cursor-pointer transition-all"></span>
+            `).join('');
+        }
+
+        function startDeckAutoSlide() {
+            if (deckTimer) clearInterval(deckTimer);
+            deckTimer = setInterval(() => {
+                currentDeckIdx = (currentDeckIdx + 1) % DECK_SLIDES.length;
+                renderDeckSlide(currentDeckIdx);
+            }, 4000);
+        }
+
+        function manualDeckSlide(direction) {
+            currentDeckIdx = (currentDeckIdx + direction + DECK_SLIDES.length) % DECK_SLIDES.length;
+            renderDeckSlide(currentDeckIdx);
+            startDeckAutoSlide();
+        }
+
+        function manualDeckSlideDirect(idx) {
+            renderDeckSlide(idx);
+            startDeckAutoSlide();
+        }
+
+        // --- 2. DASHBOARDS INTELIGENTES: ROTAÇÃO AUTOMÁTICA DOS 3 EXEMPLOS ---
+        const DASH_MODELS = [
+            {
+                id: 'jira',
+                title: 'Jira Agile Dashboard (Exemplo 1)',
+                badge: 'Jira Agile'
+            },
+            {
+                id: 'analytics',
+                title: 'User Analytics Dashboard (Exemplo 2)',
+                badge: 'User Analytics'
+            },
+            {
+                id: 'powerbi',
+                title: 'Análise de Receita & Margem (Exemplo 3)',
+                badge: 'Power BI DRE'
+            }
+        ];
+        let currentDashIdx = 0;
+        let dashTimer = null;
+
+        function renderDashWidget(idx) {
+            currentDashIdx = idx;
+            const container = document.getElementById('dash-widget-container');
+            const title = document.getElementById('dash-header-title');
+
+            DASH_MODELS.forEach((m, i) => {
+                const btn = document.getElementById(`dash-tab-${i}`);
+                if (btn) {
+                    btn.className = i === idx 
+                        ? 'px-2 py-0.5 rounded bg-indigo-600 text-white font-bold transition-colors' 
+                        : 'px-2 py-0.5 rounded bg-slate-800 text-slate-400 hover:text-white transition-colors';
+                }
+            });
+
+            if (idx === 0) {
+                // MODELO 1: JIRA DASHBOARD
+                title.textContent = DASH_MODELS[0].title;
+                container.innerHTML = `
+                    <div class="grid grid-cols-2 gap-2 text-[10px]">
+                        <div class="bg-slate-800 p-2.5 rounded-xl border border-slate-700">
+                            <div class="bg-[#0747A6] text-white px-1.5 py-0.5 rounded text-[8px] font-bold mb-1">High Level Status</div>
+                            <div class="text-[8px] text-slate-400 mb-1">Total Story Points: 139</div>
+                            <div class="grid grid-cols-4 gap-1 text-center font-bold">
+                                <div><div class="text-blue-400 text-xs">80</div><span class="text-[6px] text-slate-400">BACKLOG</span></div>
+                                <div><div class="text-purple-400 text-xs">12</div><span class="text-[6px] text-slate-400">WIP</span></div>
+                                <div><div class="text-amber-400 text-xs">41</div><span class="text-[6px] text-slate-400">VALID</span></div>
+                                <div><div class="text-emerald-400 text-xs">6</div><span class="text-[6px] text-slate-400">DELIV</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 p-2.5 rounded-xl border border-slate-700">
+                            <div class="bg-[#0747A6] text-white px-1.5 py-0.5 rounded text-[8px] font-bold mb-1">Date Bar Chart</div>
+                            <div class="flex items-end gap-1 h-9 pt-1 border-b border-slate-700">
+                                <div class="w-full bg-blue-500 h-5 rounded-t"></div>
+                                <div class="w-full bg-blue-400 h-7 rounded-t"></div>
+                                <div class="w-full bg-emerald-500 h-8 rounded-t"></div>
+                            </div>
+                            <div class="flex justify-between text-[6px] text-slate-400 mt-0.5"><span>W23</span><span>W26</span><span>W29</span></div>
+                        </div>
+                        <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                            <div class="bg-[#0747A6] text-white px-1 py-0.5 rounded text-[8px] font-bold mb-1">Items at Risk</div>
+                            <div class="text-center">
+                                <span class="text-xs font-bold text-red-400">11% (47 total)</span>
+                                <div class="w-full bg-slate-700 h-1.5 rounded-full mt-1 overflow-hidden">
+                                    <div class="bg-red-500 h-full w-[11%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 p-2 rounded-xl border border-slate-700 flex items-center justify-around">
+                            <div class="w-7 h-7 rounded-full border-4 border-red-500 border-t-blue-400 border-r-amber-400"></div>
+                            <div class="text-right">
+                                <div class="text-xs font-bold text-slate-200">Red 46%</div>
+                                <span class="text-[7px] text-slate-400">Remaining</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (idx === 1) {
+                // MODELO 2: USER ANALYTICS
+                title.textContent = DASH_MODELS[1].title;
+                container.innerHTML = `
+                    <div class="bg-slate-800 rounded-xl p-2.5 border border-slate-700 flex gap-3 text-[10px]">
+                        <div class="w-1/3 bg-slate-900/80 p-2 rounded-lg border border-slate-700/80 text-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-1 text-xs"><i class="fa-solid fa-user"></i></div>
+                            <h5 class="font-bold text-white text-[9px]">JOHN DON</h5>
+                            <span class="text-[7px] text-slate-400 block mb-2">johndon@company.com</span>
+                            <div class="space-y-1 text-[7px] text-slate-300 text-left">
+                                <div><i class="fa-solid fa-house text-blue-400 mr-1"></i> Home</div>
+                                <div><i class="fa-solid fa-file text-blue-400 mr-1"></i> Files</div>
+                                <div><i class="fa-solid fa-chart-pie text-blue-400 mr-1"></i> Graph</div>
+                            </div>
+                        </div>
+                        <div class="w-2/3 space-y-2">
+                            <div class="grid grid-cols-3 gap-1">
+                                <div class="bg-slate-900 p-1.5 rounded border border-slate-700 text-center">
+                                    <span class="text-[7px] text-slate-400 block">Earning</span>
+                                    <span class="text-xs font-extrabold text-amber-400">$628</span>
+                                </div>
+                                <div class="bg-slate-900 p-1.5 rounded border border-slate-700 text-center">
+                                    <span class="text-[7px] text-slate-400 block">Likes</span>
+                                    <span class="text-xs font-extrabold text-blue-400">1259</span>
+                                </div>
+                                <div class="bg-slate-900 p-1.5 rounded border border-slate-700 text-center">
+                                    <span class="text-[7px] text-slate-400 block">Rating</span>
+                                    <span class="text-xs font-extrabold text-emerald-400">8.5</span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded border border-slate-700">
+                                <div class="flex justify-between items-center text-[7px] text-slate-400 mb-1"><span>Result (2019-2020)</span><span class="text-amber-400 font-bold">45% Goal</span></div>
+                                <div class="flex items-end gap-1 h-8 pt-1">
+                                    <div class="w-full bg-amber-500 h-4 rounded-t"></div>
+                                    <div class="w-full bg-blue-500 h-7 rounded-t"></div>
+                                    <div class="w-full bg-amber-500 h-5 rounded-t"></div>
+                                    <div class="w-full bg-blue-600 h-8 rounded-t"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // MODELO 3: POWER BI ANÁLISE DE RECEITA
+                title.textContent = DASH_MODELS[2].title;
+                container.innerHTML = `
+                    <div class="bg-[#121026] p-2.5 rounded-xl border border-indigo-900/60 text-[10px] space-y-2">
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-1.5 rounded-lg text-white">
+                                <span class="text-[7px] block text-blue-200">Receita Operacional</span>
+                                <div class="text-xs font-black">R$ 9.681.527</div>
+                            </div>
+                            <div class="bg-gradient-to-r from-teal-500 to-emerald-600 p-1.5 rounded-lg text-white">
+                                <span class="text-[7px] block text-teal-100">Margem Contribuição</span>
+                                <div class="text-xs font-black">R$ 2.061.909</div>
+                            </div>
+                            <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-1.5 rounded-lg text-white">
+                                <span class="text-[7px] block text-purple-100">% MC Geral</span>
+                                <div class="text-xs font-black">21%</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-[8px]">
+                            <div class="bg-slate-900/90 p-1.5 rounded border border-indigo-950">
+                                <span class="text-indigo-300 font-bold block mb-1">Fornecedores Top 3</span>
+                                <div class="space-y-0.5 text-slate-300">
+                                    <div class="flex justify-between"><span>Moinho Dois Irmãos</span><span class="text-emerald-400 font-bold">R$ 5.1M</span></div>
+                                    <div class="flex justify-between"><span>Santa Rosa Alimentos</span><span class="text-emerald-400 font-bold">R$ 2.3M</span></div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900/90 p-1.5 rounded border border-indigo-950">
+                                <span class="text-indigo-300 font-bold block mb-1">Canais de Vendas</span>
+                                <div class="space-y-1">
+                                    <div class="w-full bg-slate-800 h-2 rounded overflow-hidden flex"><div class="bg-blue-500 h-full w-[60%]"></div></div>
+                                    <div class="w-full bg-slate-800 h-2 rounded overflow-hidden flex"><div class="bg-teal-400 h-full w-[35%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const indicators = document.getElementById('dash-indicators');
+            indicators.innerHTML = DASH_MODELS.map((_, i) => `
+                <span onclick="manualDashSelect(${i})" class="w-2 h-2 rounded-full ${i === idx ? 'bg-indigo-400' : 'bg-slate-700'} cursor-pointer"></span>
+            `).join('');
+        }
+
+        function startDashAutoRotate() {
+            if (dashTimer) clearInterval(dashTimer);
+            dashTimer = setInterval(() => {
+                currentDashIdx = (currentDashIdx + 1) % DASH_MODELS.length;
+                renderDashWidget(currentDashIdx);
+            }, 4500);
+        }
+
+        function manualDashSelect(idx) {
+            renderDashWidget(idx);
+            startDashAutoRotate();
+        }
+
+        // INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
             renderLogo();
             renderPortfolio();
             renderLeads();
             updateContactsUI();
             setupEventListeners();
+            
+            // Inicializa Sliders Automáticos
+            renderDeckSlide(0);
+            startDeckAutoSlide();
+
+            renderDashWidget(0);
+            startDashAutoRotate();
         });
 
         function renderLogo() {
@@ -861,7 +1241,6 @@
                 });
             });
 
-            // Formulário de Orçamento -> Salva Lead e Envia por E-mail (mailto:)
             document.getElementById('quote-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = document.getElementById('form-name').value.trim();
@@ -882,7 +1261,6 @@
                 localStorage.setItem('tdm_leads', JSON.stringify(state.leads));
                 renderLeads();
 
-                // Dispara o cliente de e-mail com os dados formatados para o e-mail da agência
                 const subject = encodeURIComponent(`Solicitação de Orçamento / Contato - ${name}`);
                 const body = encodeURIComponent(`Olá, TDM Conecta!\n\nRecebi um novo pedido de orçamento pelo site com os seguintes dados:\n\nNome/Empresa: ${name}\nRamo de Atuação: ${segment}\nServiços Pretendidos: ${services}\n\nMensagem / Detalhes:\n${message}\n\n---\nEnviado através do formulário do site.`);
                 
